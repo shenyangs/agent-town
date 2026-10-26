@@ -6,7 +6,7 @@
 
 ## 环境与安装
 
-- Node.js **22.12+（22 系列）或 24+**，推荐 Node.js 24 LTS；npm 随 Node 安装。
+- Node.js **22.12+（22.x）、24.x 或 26+**，推荐 Node.js 24 LTS；npm 随 Node 安装。
 - macOS、Windows、Linux 使用相同 npm 命令。Linux 需有 Chromium 所需系统运行库；setup 不修改系统设置、不自动安装操作系统包。
 - 安装需要访问 npm 包源和 Playwright 浏览器下载源；运行演示不需要外网或密钥。
 - 约需数百 MB 空间保存浏览器。依赖由 `package-lock.json` 锁定，Playwright 固定 1.59.1。请使用 `npm ci`，不要删除锁文件重新解析浮动版本。

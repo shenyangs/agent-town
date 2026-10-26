@@ -57,6 +57,11 @@
       "id": "native-nine-agent-replay",
       "passed": false,
       "evidence": "README.md"
+    },
+    {
+      "id": "node-23-25-rejected-and-vitest-engine-aligned",
+      "passed": true,
+      "evidence": "artifacts/test.log"
     }
   ],
   "commands": [
@@ -124,6 +129,7 @@
       "artifacts/mobile-zh.png"
     ],
     "setup": "npm run setup",
-    "doctor": "npm run doctor"
+    "doctor": "npm run doctor",
+    "nodeRange": "^22.12.0 || ^24.0.0 || >=26.0.0"
   }
 }

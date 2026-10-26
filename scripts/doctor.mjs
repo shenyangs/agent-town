@@ -4,7 +4,7 @@ import {root,nodeSupported,missingDependencies,browserEnvironment} from './env.m
 let failures=0;
 const report=(ok,message)=>{console.log(`${ok?'通过':'待处理'}：${message}`);if(!ok)failures++;};
 console.log('AgentTown 环境诊断（不读取凭据，不要求 API Key）');
-report(nodeSupported(),`Node.js ${process.versions.node}；要求 22.12+（22 系列）或 24+，推荐 24 LTS`);
+report(nodeSupported(),`Node.js ${process.versions.node}；要求 22.12+（22.x）、24.x 或 26+，推荐 24 LTS`);
 const missing=missingDependencies();
 report(!missing.length,missing.length?`缺少依赖：${missing.join('、')}。请运行 npm run setup 或 npm ci --cache .npm-cache。`:'项目依赖齐全');
 if(!missing.length){
