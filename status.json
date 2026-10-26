@@ -1,7 +1,7 @@
 {
   "project": "agent-town",
   "state": "PARTIAL",
-  "scenario": "中文默认像素工位：合成示例回放、本地真实测试观察、POST/SSE 状态同步；包含安装与环境诊断。原生九代理历史回放未接入。",
+  "scenario": "暖白苔绿的小镇工作地图：点选工位详情、横向事件时间带、合成回放与真实测试进程事件。原生代理适配仍未接入。",
   "checks": [
     {
       "id": "build",
@@ -14,12 +14,12 @@
       "evidence": "artifacts/test.log"
     },
     {
-      "id": "e2e-4-tests-chinese-mobile-keyboard-retry",
+      "id": "e2e-5-tests-map-drawer-mobile-keyboard-retry",
       "passed": true,
       "evidence": "artifacts/e2e.log"
     },
     {
-      "id": "chinese-demo",
+      "id": "town-map-demo-and-real-screenshots",
       "passed": true,
       "evidence": "artifacts/demo.log"
     },
@@ -131,5 +131,27 @@
     "setup": "npm run setup",
     "doctor": "npm run doctor",
     "nodeRange": "^22.12.0 || ^24.0.0 || >=26.0.0"
+  },
+  "redesign": {
+    "layout": "top-down-town-map",
+    "palette": "warm-white-moss-green",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "screenshots": [
+      "docs/images/town-overview.png",
+      "docs/images/live-workstation.png"
+    ],
+    "verified": [
+      "desktop fits viewport",
+      "mobile no horizontal overflow",
+      "workstation drawer open and close",
+      "live POST to SSE state update",
+      "empty imported source",
+      "keyboard focus",
+      "replay loading and error recovery"
+    ],
+    "nativeIntegration": "PARTIAL"
   }
 }

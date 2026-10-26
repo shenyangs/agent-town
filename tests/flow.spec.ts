@@ -35,3 +35,15 @@ test('中文引导、键盘焦点、小屏及失败恢复',async({page,request})
  const invalid=await request.post('/api/events',{data:{type:'testing'}});expect(invalid.status()).toBe(400);expect((await invalid.json()).error).toBe('ts 必须是有效时间戳');
  await page.screenshot({path:'artifacts/mobile-zh.png',fullPage:true});
 });
+
+test('桌面地图尺寸与详情操作',async({page})=>{
+ await page.goto('/');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ const map=await page.getByRole('region',{name:'小镇工位地图'}).boundingBox();
+ expect(map?.height).toBeGreaterThan(450);
+ expect(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight)).toBe(true);
+ await page.getByTestId('desk-nova').click();
+ await expect(page.getByRole('complementary',{name:'工位详情'})).toContainText('nova');
+ await page.getByRole('button',{name:'关闭工位详情'}).click();
+ await expect(page.getByRole('complementary',{name:'工位详情'})).toHaveCount(0);
+});

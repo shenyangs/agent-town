@@ -4,11 +4,16 @@ test('record fixture replay and genuine test-process observation',async({page,re
  await page.waitForTimeout(1000);await page.getByRole('button',{name:'播放示例',exact:true}).click();
  await expect(page.getByTestId('desk-atlas').locator('.state')).toHaveText('测试中');
  await expect(page.getByTestId('desk-echo').locator('.state')).toHaveText('空闲');
+ await expect(page.getByRole('status')).toContainText('示例回放已结束');
  await page.screenshot({path:'artifacts/replay.png'});
+ await page.screenshot({path:'docs/images/town-overview.png'});
  await page.waitForTimeout(800);await page.getByRole('button',{name:'本地实时',exact:true}).click();
  await request.post('/api/events',{data:{ts:new Date().toISOString(),agentId:'atlas',type:'testing',message:'Playwright 演示正在执行实时 SSE 断言',source:'live',file:'tests/demo.spec.ts'}});
  await expect(page.getByTestId('desk-atlas').locator('.state')).toHaveText('测试中');
  await expect(page.getByTestId('desk-atlas')).toContainText('Playwright 演示正在执行');
+ await page.getByTestId('desk-atlas').click();
+ await expect(page.getByRole('complementary',{name:'工位详情'})).toContainText('tests/demo.spec.ts');
+ await page.screenshot({path:'docs/images/live-workstation.png'});
  await page.screenshot({path:'artifacts/live.png'});await page.waitForTimeout(1200);
  await request.post('/api/events',{data:{ts:new Date().toISOString(),agentId:'atlas',type:'idle',message:'实时 SSE 断言已成功完成',source:'live',file:'tests/demo.spec.ts'}});
  await expect(page.getByTestId('desk-atlas').locator('.state')).toHaveText('空闲');await page.waitForTimeout(1000);
