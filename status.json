@@ -1,0 +1,81 @@
+{
+  "project": "agent-town",
+  "state": "PARTIAL",
+  "scenario": "Fixture replay and genuine local test observations delivered through POST/SSE to pixel desks. Native nine-agent log replay not integrated.",
+  "checks": [
+    {
+      "id": "build",
+      "passed": true,
+      "evidence": "artifacts/build.log"
+    },
+    {
+      "id": "unit-validation-history-cap",
+      "passed": true,
+      "evidence": "artifacts/test.log"
+    },
+    {
+      "id": "live-sse-status-no-invention-and-import-label",
+      "passed": true,
+      "evidence": "artifacts/e2e.log"
+    },
+    {
+      "id": "recorded-demo",
+      "passed": true,
+      "evidence": "artifacts/demo.log"
+    },
+    {
+      "id": "real-test-observer-script",
+      "passed": true,
+      "evidence": "artifacts/observer.log"
+    },
+    {
+      "id": "native-codex-nine-agent-replay",
+      "passed": false,
+      "evidence": "README.md"
+    }
+  ],
+  "commands": [
+    {
+      "cmd": "npm run build",
+      "exitCode": 0
+    },
+    {
+      "cmd": "npm run test",
+      "exitCode": 0
+    },
+    {
+      "cmd": "npm run e2e (initial missing Chromium)",
+      "exitCode": 1
+    },
+    {
+      "cmd": "npm run e2e (missing FFmpeg)",
+      "exitCode": 1
+    },
+    {
+      "cmd": "npm run e2e (button accessible name mismatch; fixed)",
+      "exitCode": 1
+    },
+    {
+      "cmd": "npm run e2e (compatible existing browser cache)",
+      "exitCode": 0
+    },
+    {
+      "cmd": "npm run demo (compatible existing browser cache)",
+      "exitCode": 0
+    },
+    {
+      "cmd": "node scripts/observe-tests.mjs (API running)",
+      "exitCode": 0
+    }
+  ],
+  "liveModel": false,
+  "fixturesUsed": true,
+  "demoVideo": "artifacts/playwright/demo/demo-record-fixture-replay-7f27b-ne-test-process-observation/video.webm",
+  "limitations": [
+    "No model inference or native Codex/Claude trace adapter.",
+    "No real nine-agent sprint trace available; imported transport verified using a labelled synthetic test event.",
+    "Event history is memory-only and retains 500 events.",
+    "Live source provenance is supplied by local producer, not authenticated.",
+    "Initial latest-browser download was stopped after pinning Playwright 1.59.1 and using a compatible existing read-only cache. Fresh clone must install its browser."
+  ]
+}
