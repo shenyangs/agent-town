@@ -1,0 +1,1 @@
+export default function App() { return <main className='container'><div className='eyebrow'>AI X Sprint · agent-town</div><h1>agent-town</h1><p className='muted'>Starter only. Coding agent must implement and test a real P0 workflow.</p></main>; }
