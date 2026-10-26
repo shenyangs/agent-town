@@ -1,31 +1,20 @@
-# A01 — AgentTown
+# AgentTown 项目说明
 
-Build a WORKING, visually memorable 2D pixel-art command center for coding agents. This is a 110-minute implementation sprint, not a full product. Read ./AGENTS.md first. Work only in this repository. Do not ask clarifying questions: implement the P0 scope and tests.
+构建独立可运行的 TypeScript / React / Vite / Express 本地代理事件观察台。网页端口 4201，API 端口 5201，均仅绑定 127.0.0.1。
 
-## Stack and boundaries
-- Existing Vite/React/TypeScript client; Express/Node/tsx server; native EventSource/SSE; CSS or inline SVG pixel sprites, no canvas game engine.
-- Input event schema `{ts, agentId, type: "planning"|"writing"|"testing"|"idle"|"error", message, source?: "live"|"replay"|"imported", file?}`. Validate schema, truncate messages, cap events to 500.
-- POST `/api/events` injects LOCAL demo events; GET `/api/events/stream` provides SSE; GET `/api/events/history` returns state. Localhost only; no arbitrary command execution.
-- `fixtures/agent-trace.jsonl` is replayable and must be labelled REPLAY. When using a real forwarded agent event, show LIVE. Never synthesize a live coding event.
+## 核心功能
 
-## P0 happy path
-1. Four pixel agent desks and characters. Agent names/status/last tool or file appear in crisp cards.
-2. Start with a replay source visibly marked REPLAY; hit 'Replay trace' and watch characters animate from planning to writing to testing, synchronized to events.
-3. Switch to live local source; POST two genuine events via a script or curl and watch those desk states update without refresh. Derive state solely from the received messages.
-4. After P0, consume events imported from REAL Codex JSONL sprint logs by the root `scripts/import_codex_events.py` bridge. Imported old logs are labelled `RUN REPLAY`, not `LIVE`; map actual turn, command and file-change events to animation. The other 9 coding agents ARE the demo use case. Do not directly read arbitrary sibling repos.
+- 四个像素工位及角色，由收到的事件驱动规划、编写、测试、空闲、错误状态。
+- POST /api/events 校验事件，SSE 实时推送，历史最多保留 500 条。
+- 合成示例必须标记“示例回放”；历史导入必须标记“历史回放”；即时本地观察标记“实时”。不伪造 AI 推理或代理活动。
+- 界面、错误、空态、引导、文档默认中文；品牌、API 标识保留原文。
+- 跨平台 npm run setup 安装项目依赖和浏览器；npm run doctor 检查 Node、依赖、浏览器及固定端口。
+- 小屏单列布局、键盘焦点、忙碌和失败重试反馈。
 
-## Must prove
-- `tests/flow.spec.ts` opens the UI, POSTs a `testing` event to backend, asserts status `Testing` on matching agent, then POSTs `idle`, asserts it changes to Idle. Test includes absence of invented events.
-- Unit test validates malformed events are rejected and history is capped.
-- `tests/demo.spec.ts` records the REAL replay + a live event and saves screenshot/video.
-- README declares that Codex/Claude native trace adapters are NOT implemented unless actually working, explains POST/SSE bridge.
+## 验收
 
-## Visual narrative / X video
-0–3s: tiny pixel office labelled 'Your agents have desks now.'; 3–12s: nine avatars switch statuses as sprint JSONL events replay; 12–19s: one genuine imported test event appears in timeline; 19–24s: zoom on synchronized event and status. Navy canvas, 8-bit typography accents, legible labels.
+实际运行 npm run build、npm run test、npm run e2e、npm run demo。浏览器断言必须验证 POST → SSE → 工位的“测试中 → 空闲”，并确认没有编造事件。另验证中文标签、小屏布局、回放忙碌和错误恢复。记录真实截图、录像、日志，不提交这些证据或缓存到 Git。
 
-STOP building features once end-to-end test passes. Record truthful status.json with evidence.
+## 范围与限制
 
-
-Execute within this directory only. Run npm install, implement, then build/test/e2e/demo. Preserve real logs and status.json.
-
-This is an authorized independent sprint execution. Start implementing now, no confirmation. Do not spawn subagents. All writes limited to this app directory; use npm install --cache .npm-cache and keep .npm-cache ignored. Existing Playwright browsers may be read from ~/Library/Caches/ms-playwright; if install required use PLAYWRIGHT_BROWSERS_PATH inside this project. Install dependencies, replace starter tests with meaningful behavior tests, run build/test/e2e/demo and preserve actual logs, screenshot and video. Do not read user credentials or other project data. Missing model keys: runnable clearly labelled fixture and PARTIAL status. Add LICENSE. Verify and finish, not merely plan.
+当前不实现原生 Codex/Claude 日志读取、模型调用或真实九代理历史回放。通过公开事件协议接入历史数据；无数据时诚实显示空态。完整任务状态 PARTIAL。只修改本项目，不读取其他项目或凭据。MIT 原文和 AGENTS.md 规范保留。README、锁文件、环境示例、status.json 必须与实现一致。

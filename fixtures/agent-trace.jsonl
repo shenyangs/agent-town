@@ -1,9 +1,9 @@
-{"ts":"2026-10-26T10:00:00Z","agentId":"atlas","type":"planning","message":"Fixture: outline the event bridge","file":"server/events.ts"}
-{"ts":"2026-10-26T10:00:01Z","agentId":"nova","type":"planning","message":"Fixture: sketch the office","file":"src/App.tsx"}
-{"ts":"2026-10-26T10:00:02Z","agentId":"sage","type":"writing","message":"Fixture: add input validation","file":"server/events.ts"}
-{"ts":"2026-10-26T10:00:03Z","agentId":"echo","type":"testing","message":"Fixture: exercise the SSE path","file":"tests/flow.spec.ts"}
-{"ts":"2026-10-26T10:00:04Z","agentId":"atlas","type":"writing","message":"Fixture: implement event delivery","file":"server/index.ts"}
-{"ts":"2026-10-26T10:00:05Z","agentId":"nova","type":"writing","message":"Fixture: draw pixel desks","file":"src/style.css"}
-{"ts":"2026-10-26T10:00:06Z","agentId":"sage","type":"testing","message":"Fixture: validate malformed input","file":"tests/events.test.ts"}
-{"ts":"2026-10-26T10:00:07Z","agentId":"atlas","type":"testing","message":"Fixture: verify stream updates","file":"tests/flow.spec.ts"}
-{"ts":"2026-10-26T10:00:08Z","agentId":"echo","type":"idle","message":"Fixture: trace complete"}
+{"ts": "2026-10-26T10:00:00Z", "agentId": "atlas", "type": "planning", "message": "合成示例：规划事件桥接", "file": "server/events.ts"}
+{"ts": "2026-10-26T10:00:01Z", "agentId": "nova", "type": "planning", "message": "合成示例：设计像素办公室", "file": "src/App.tsx"}
+{"ts": "2026-10-26T10:00:02Z", "agentId": "sage", "type": "writing", "message": "合成示例：添加输入校验", "file": "server/events.ts"}
+{"ts": "2026-10-26T10:00:03Z", "agentId": "echo", "type": "testing", "message": "合成示例：验证 SSE 路径", "file": "tests/flow.spec.ts"}
+{"ts": "2026-10-26T10:00:04Z", "agentId": "atlas", "type": "writing", "message": "合成示例：实现事件投递", "file": "server/index.ts"}
+{"ts": "2026-10-26T10:00:05Z", "agentId": "nova", "type": "writing", "message": "合成示例：绘制像素工位", "file": "src/style.css"}
+{"ts": "2026-10-26T10:00:06Z", "agentId": "sage", "type": "testing", "message": "合成示例：验证错误输入", "file": "tests/events.test.ts"}
+{"ts": "2026-10-26T10:00:07Z", "agentId": "atlas", "type": "testing", "message": "合成示例：确认流式状态更新", "file": "tests/flow.spec.ts"}
+{"ts": "2026-10-26T10:00:08Z", "agentId": "echo", "type": "idle", "message": "合成示例：轨迹结束"}
